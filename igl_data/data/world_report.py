@@ -1,9 +1,7 @@
-from igl_data.data.s3_transfer import load_df_pkl
-from igl_data.utilities import eval_cols
 import smart_open
 import pandas as pd
 
-S3_PATH = 'https://s3.us-east-2.amazonaws.com/igl-public/dap-innovation-tutorials/{}'
+S3_PATH = 'https://s3.eu-west-2.amazonaws.com/igl-public/dap-innovation-tutorials/{}'
 
 def world_report_mesh(chunksize=50000):
     '''world_report_mesh
@@ -56,15 +54,13 @@ def world_report_mesh(chunksize=50000):
         abstracts and MeSH labels.
     '''
     list_cols = [
-            'json_funding_project', 
-            'terms_descriptive_project',
-            'terms_mesh_abstract', 
-            'terms_of_countryTags',
-            ]
+        'json_funding_project', 
+        'terms_descriptive_project',
+        'terms_mesh_abstract', 
+        'terms_of_countryTags',
+    ]
     key = 'world_report/wr_scanner_with_mesh.csv.bz2'
-    df = pd.read_csv(
-            smart_open(S3_PATH.format(key)),
-            converters=eval_cols(list_cols), 
-            chunksize=chunksize,
-            compression='bz2')
+    
+    with smart_open.open(S3_PATH.format(key)) as f:
+        df = pd.read_csv(f, compression='bz2')
     return df

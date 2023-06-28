@@ -16,7 +16,7 @@ def gtr_sample():
     gtr_projects_key='dap-innovation-tutorials/gateway-to-research/gtr_projects.csv'
     list_cols = ['research_topics', 'research_subjects']
     gtr_projects_df = pd.read_csv(
-        smart_open.smart_open("https://s3.us-east-2.amazonaws.com/{}/{}".format(bucket, gtr_projects_key)),
+        smart_open.smart_open("https://s3.eu-west-2.amazonaws.com/{}/{}".format(bucket, gtr_projects_key)),
         converters=eval_cols(list_cols),
         index_col=0
     )
@@ -87,6 +87,7 @@ def gtr_link_table(table):
             - outcomes_spinouts
             - participant
             - persons
+            - projects
             - topic
     Returns
     -------

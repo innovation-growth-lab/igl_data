@@ -5,7 +5,7 @@ import pickle
 
 
 def load_df_pkl(bucket, key):
-    url = "https://s3.us-east-2.amazonaws.com/{}/{}".format(
+    url = "https://s3.eu-west-2.amazonaws.com/{}/{}".format(
             bucket, key)
     with smart_open.open(url, 'rb') as f:
         df = pickle.loads(f.read())

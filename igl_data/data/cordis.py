@@ -7,7 +7,7 @@ from igl_data.data.s3_transfer import load_df_pkl
 
 bucket = 'igl-public'
 folder = 'dap-innovation-tutorials/cordis/mysql'
-S3_PATH = 'https://s3.us-east-2.amazonaws.com/igl-public/dap-innovation-tutorials/{}'
+S3_PATH = 'https://s3.eu-west-2.amazonaws.com/igl-public/dap-innovation-tutorials/{}'
 
 def cordis_table(table):
     '''cordis_table

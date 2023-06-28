@@ -41,21 +41,11 @@ def arxiv_articles(chunk=None):
     
     Returns
     -------
-    generator
-        A generator that returns ArXiv articles in chunks of 100,000
-    
-    or
-
     DataFrame
         A dataframe from a single chunk.
     '''
-    if chunk is None:
-        for i in range(16):
-            key = f'{folder}/arxiv_articles_{i:02}.pkl.bz2'
-            yield load_df_pkl(bucket, key)
-    else:
-        key = f'{folder}/arxiv_articles_{chunk:02}.pkl.bz2'
-        return load_df_pkl(bucket, key)
+    key = f'{folder}/arxiv_articles_{chunk:02}.pkl.bz2'
+    return load_df_pkl(bucket, key)
 
 def arxiv_sample_2017():
     '''arxiv_papers
@@ -67,10 +57,10 @@ def arxiv_sample_2017():
         arxiv_df (`pd.DataFrame`): Parsed dataframe of arXiv papers.
     '''
     year = 2017
-    bucket='innovation-mapping-tutorials'
-    key='arxiv_{}/arxiv_{}.csv'.format(year, year)
+    bucket='igl-public'
+    key='dap-innovation-tutorials/arxiv_{}/arxiv_{}.csv'.format(year, year)
     arxiv_df = pd.read_csv(
-        smart_open.smart_open('https://s3.us-east-2.amazonaws.com/{}/{}'.format(bucket, key)),
+        smart_open.smart_open('https://s3.eu-west-2.amazonaws.com/{}/{}'.format(bucket, key)),
         index_col=0,
         converters={
             'authors': double_eval,

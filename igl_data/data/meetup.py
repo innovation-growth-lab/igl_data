@@ -2,7 +2,7 @@ import ast
 import pandas as pd
 from smart_open import smart_open
 
-S3_PATH = 'https://s3.us-east-2.amazonaws.com/igl-public/dap-innovation-tutorials/{}'
+S3_PATH = 'https://s3.eu-west-2.amazonaws.com/igl-public/dap-innovation-tutorials/{}'
 
 def _parse_meetup_topics(topic_list):
     names = []
