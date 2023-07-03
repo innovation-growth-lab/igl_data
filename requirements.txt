@@ -13,3 +13,4 @@ pytest
 sqlalchemy
 toolz
 pyarrow
+openpyxl
